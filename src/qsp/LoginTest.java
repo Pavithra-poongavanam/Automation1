@@ -47,8 +47,7 @@ WebElement dashboardElement = driver.findElement(By.xpath("/html/body/app-root/a
 		{
 			System.out.println("Login successful!");
 		} 
-		else
-		{
+		else {
 			System.out.println("Login failed.");
 		}		
 		//Thread.sleep(2000);
@@ -100,7 +99,7 @@ WebElement dashboardElement = driver.findElement(By.xpath("/html/body/app-root/a
 		Thread.sleep(2000);
 		WebElement logout= driver.findElement(By.xpath("/html/body/app-root/app-core/app-profile/div/div/div/button"));
 		logout.click();
-		
+	
 		
 		
 	//	driver.quit();
