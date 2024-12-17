@@ -1,4 +1,4 @@
-package epg;
+ package epg;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -231,8 +231,8 @@ Thread.sleep(2000);
                  }
                  
 //Create channel                 
-                 WebElement createchannel= driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[2]/button"));
-                 createchannel.click();  
+WebElement createchannel= driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[2]/button"));
+createchannel.click();  
                  Thread.sleep(3000);                 
                              WebElement channelNameInput = driver.findElement(By.cssSelector("body > app-root > app-core > app-create-channel > div > div.content__box > form > div > div.input_with_icon > input"));
                              channelNameInput.sendKeys("Testing2");
@@ -301,21 +301,20 @@ Thread.sleep(2000);
                              Thread.sleep(2000);
                       
 //*************************************************************
-                             
-                             WebElement groups= driver.findElement(By.xpath("/html/body/app-root/app-core/app-navbar/nav/div/div[2]/ul/li[2]/a"));
-                    		 groups.click();
-                    		 Thread.sleep(2000);
-                    		 //Search function
-                    		WebElement search= driver.findElement(By.xpath("/html/body/app-root/app-core/app-client-list/div/div/div[1]/div/div/input"));
-                    		 search.sendKeys("Testing");
-                    		 Thread.sleep(2000);
-                    		 search.clear();
-                    		 Thread.sleep(1000);
-                    		//Create group
-                    		 WebElement create = driver.findElement(By.xpath("/html/body/app-root/app-core/app-client-list/div/div/div[1]/div/button"));
-                    		 create.click();
-                    		 Thread.sleep(2000);
-                    		 WebElement groupNameField = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-edit-client/div/div/form/div[1]/input"));
+                            WebElement groups= driver.findElement(By.xpath("/html/body/app-root/app-core/app-navbar/nav/div/div[2]/ul/li[2]/a"));
+	                    		 groups.click();
+	                    		 Thread.sleep(2000);
+	                    		 //Search function
+	                    		WebElement search= driver.findElement(By.xpath("/html/body/app-root/app-core/app-client-list/div/div/div[1]/div/div/input"));
+	                    		 search.sendKeys("Testing");
+	                    		 Thread.sleep(2000);
+	                    		 search.clear();
+	                    		 Thread.sleep(1000);
+	                    		//Create group
+	                    		 WebElement create = driver.findElement(By.xpath("/html/body/app-root/app-core/app-client-list/div/div/div[1]/div/button"));
+	                    		 create.click();
+	                    		 Thread.sleep(2000);
+	                    		 WebElement groupNameField = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-edit-client/div/div/form/div[1]/input"));
                     		 System.out.println("Enter the group name: ");		 	
                     		 String groupString = scanner.nextLine();
                     		 groupNameField.sendKeys(groupString);
