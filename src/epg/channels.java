@@ -1,14 +1,11 @@
 package epg;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.Random;
-
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,6 +29,10 @@ public class channels {
 		WebElement password= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[2]/input"));//search password field
 		password.sendKeys("onnet@1234");
 		Thread.sleep(1000);
+		WebElement eyebuttonElement = driver.findElement(By.xpath("//Img[@alt='Show Password']"));
+		eyebuttonElement.click();
+		Thread.sleep(2000);
+
 		WebElement Login= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[3]/button"));
 		Login.click();
 		Thread.sleep(5000);
@@ -86,7 +87,7 @@ WebElement channel= driver.findElement(By.xpath("/html/body/app-root/app-core/ap
              System.out.println("Check box: " + checkboxname);
                if (!checkbox.isSelected()) {
                    checkbox.click();
-                  // Thread.sleep(1000);                
+                   Thread.sleep(1000);                
                }
                if (checkbox.isSelected()) {
                    System.out.println("Checkbox for '" + checkboxname + "' successfully selected.");
@@ -96,6 +97,7 @@ WebElement channel= driver.findElement(By.xpath("/html/body/app-root/app-core/ap
                if (checkbox.isSelected()) {
                    checkbox.click();
                }
+               System.out.println("Checkboxes are working fine");                              
            }        
            
 //sort function
@@ -112,7 +114,7 @@ Thread.sleep(2000);
                        System.out.println("Radio Button : " + radiobuttonname);
                          if (!radiobutton.isSelected()) {
                         	 radiobutton.click();
-                            // Thread.sleep(1000);                          
+                             Thread.sleep(1000);                          
                          }
                          if (radiobutton.isSelected()) {
                              System.out.println("Radio button for " + radiobuttonname + " successfully selected.");
@@ -122,6 +124,7 @@ Thread.sleep(2000);
                          if (radiobutton.isSelected()) {
                         	 radiobutton.click();
                          }
+                         System.out.println("Radio buttons are working fine");
                      }
 
 //Download Button
@@ -162,6 +165,7 @@ Thread.sleep(2000);
 		    String optionText = option.getText().trim();  
 		    System.out.println("Selecting option: " + optionText);
 		    select.selectByVisibleText(optionText);
+		    Thread.sleep(2000);
 		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));  
 		    WebElement table = driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[2]/div[1]/table[1]/tbody"));
 		    wait.until(ExpectedConditions.visibilityOf(table));
@@ -171,6 +175,7 @@ Thread.sleep(2000);
 // Pagination
 		 WebElement rowsElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[2]/div[2]/div[1]/div/select"));
          rowsElement.click();
+         Thread.sleep(2000);
 		WebElement fivehunderd= driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[2]/div[2]/div[1]/div/select/option[6]"));
 		fivehunderd.click();
 		Thread.sleep(2000);
@@ -208,7 +213,7 @@ Thread.sleep(2000);
             }
             
 //scroll horizontally and vertically      
-            
+/*            
             rowsElement.click();
             WebElement twenty= driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[2]/div[2]/div[1]/div/select/option[3]"));
     		twenty.click(); 
@@ -240,11 +245,12 @@ Thread.sleep(2000);
                      js.executeScript("arguments[0].scrollLeft -= arguments[0].scrollWidth / 10;", scroller);
                      Thread.sleep(3000); // Pause to make the scroll visible
                  }
-                 
+ */                
 //Create channel
                  
                  WebElement createchannel= driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[2]/button"));
                  createchannel.click();  
+                 System.out.println("Channel Creation page");
                  Thread.sleep(3000);
                  
                              WebElement channelNameInput = driver.findElement(By.cssSelector("body > app-root > app-core > app-create-channel > div > div.content__box > form > div > div.input_with_icon > input"));
@@ -260,6 +266,8 @@ Thread.sleep(2000);
                              Random rand = new Random();
                              int randomGenreIndex = rand.nextInt(genreOptions.size() - 1) + 1; 
                              genreSelect.selectByIndex(randomGenreIndex);
+                             String selectedGenreOptionText = genreOptions.get(randomGenreIndex).getText();
+                             System.out.println("Genre Selected is: " + selectedGenreOptionText);
 
                              // Selecting random language from the language dropdown
                              WebElement languageDropdown = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-channel/div/div[1]/form/div/div[3]/div[2]/select"));
@@ -269,6 +277,8 @@ Thread.sleep(2000);
                              List<WebElement> languageOptions = languageSelect.getOptions();
                              int randomLanguageIndex = rand.nextInt(languageOptions.size() - 1) + 1; 
                              languageSelect.selectByIndex(randomLanguageIndex);
+                             String selectedlanguageOptionText = languageOptions.get(randomLanguageIndex).getText();
+                             System.out.println("Language Selected  is: " + selectedlanguageOptionText);
                              Thread.sleep(4000);
                              
                              WebElement resetButton = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-channel/div/div[1]/form/div/div[4]/div[2]/div[1]/button"));
@@ -287,6 +297,8 @@ Thread.sleep(2000);
                              genreOptions = genreSelect.getOptions();
                              randomGenreIndex = rand.nextInt(genreOptions.size() - 1) + 1; // Skip the default "Select"
                              genreSelect.selectByIndex(randomGenreIndex);
+                             String selectedGenreOption1Text = genreOptions.get(randomGenreIndex).getText();
+                             System.out.println("Genre Selected is: " + selectedGenreOption1Text);
                              Thread.sleep(2000);
 
                              languageDropdown.click();
@@ -294,8 +306,10 @@ Thread.sleep(2000);
                              languageOptions = languageSelect.getOptions();
                              randomLanguageIndex = rand.nextInt(languageOptions.size() - 1) + 1; // Skip the default "Select"
                              languageSelect.selectByIndex(randomLanguageIndex);
+                             String selectedlanguage1OptionText = languageOptions.get(randomLanguageIndex).getText();
+                             System.out.println("Language Selected is: " + selectedlanguage1OptionText);
                              Thread.sleep(2000);
-                             
+                                                          
      //Uploadlogo                         
                              WebElement uploadButton = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-channel/div/div[1]/form/div/div[1]/div[2]/div/label/span"));
                              if (uploadButton.isEnabled()) {
@@ -314,7 +328,15 @@ Thread.sleep(2000);
                       WebElement saveButton = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-channel/div/div[1]/form/div/div[4]/div[2]/div[2]/button"));
                              saveButton.click();
                              Thread.sleep(2000);
-                
+                      WebElement channelsCreationpage= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-channel/div/div[1]/div/h3"));
+                         if(channelsCreationpage.isDisplayed())
+                             {
+                             	System.out.println("Error!!! Channel is not created !!!");;
+                             	
+                             }
+                             else {
+                 				System.out.println("Channel Created Successfully");                 				
+                 			}                
 					} catch (Exception e) {
 					e.printStackTrace();
 					} finally {

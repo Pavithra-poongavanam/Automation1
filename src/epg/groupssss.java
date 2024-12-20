@@ -31,6 +31,9 @@ public class groupssss {
 			WebElement password= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[2]/input"));//search password field
 			password.sendKeys("onnet@1234");
 			Thread.sleep(1000);
+			WebElement eyebuttonElement = driver.findElement(By.xpath("//Img[@alt='Show Password']"));
+    		eyebuttonElement.click();
+    		Thread.sleep(2000);
 			WebElement Login= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[3]/button"));
 			Login.click();
 			Thread.sleep(5000);			
