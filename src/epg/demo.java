@@ -24,15 +24,27 @@ try{
     		Thread.sleep(2000);
             WebElement login = driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[3]/button"));
             login.click();
-            Thread.sleep(5000); 
+            Thread.sleep(3000); 
             
-            WebElement dashboardElement1 = driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[1]/div[1]/h3"));
+           
+            WebElement genreElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-navbar/nav/div/div[2]/ul/li[4]/a"));
+    		genreElement.click();
+    		Thread.sleep(2000);
+    		WebElement genre= driver.findElement(By.xpath("/html/body/app-root/app-core/app-genre-list/div/div/div[1]/h3"));
+    		if(genre.isDisplayed())
+    			System.out.println("Genre Page");
+    			else {
+    				System.out.println("Unable to open genre page");		
+    			}
+    		Thread.sleep(5000);
+    		WebElement actionElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-genre-list/div/div/div[2]/div[2]/div[3]/span/svg"));
     		
-    		if (dashboardElement1.isDisplayed()) {
-    			System.out.println("Login successful!");
-    		} else {
-    			System.out.println("Login failed.");   		
-    		}
+    		actionElement.click();
+    		Thread.sleep(1000);
+    		WebElement editgenreElement=driver.findElement(By.xpath("/html/body/app-root/app-core/app-genre-list/div/div/div[2]/div[24]/div[3]/span/div/ul/li"));
+    	editgenreElement.click();
+    	
+    		
 }catch (Exception e) {
     e.printStackTrace();
 } finally {

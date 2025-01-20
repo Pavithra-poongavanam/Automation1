@@ -91,7 +91,7 @@ System.out.println("Channel Creation page");
 Thread.sleep(100);
 
             WebElement channelNameInput = driver.findElement(By.cssSelector("body > app-root > app-core > app-create-channel > div > div.content__box > form > div > div.input_with_icon > input"));
-            channelNameInput.sendKeys("AutomationTesting1");
+            channelNameInput.sendKeys("AutomationTesting2");
             Thread.sleep(100);
             
             WebElement uploadButton = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-channel/div/div[1]/form/div/div[1]/div[2]/div/label/span"));
@@ -165,7 +165,7 @@ Thread.sleep(100);
    		 create.click();
    		 Thread.sleep(2000);
    		 WebElement groupNameField = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-edit-client/div/div/form/div[1]/input"));
-   		 groupNameField.sendKeys("AutomationTesting1");
+   		 groupNameField.sendKeys("AutomationTesting2");
    		 // Randomly select a radio button for services
     		List<WebElement> serviceRadioButtons = driver.findElements(By.cssSelector("input[type='radio']"));
     		int randomIndex = new Random().nextInt(serviceRadioButtons.size());
@@ -227,10 +227,10 @@ Thread.sleep(100);
        	languageCreate.click();
        	
        	WebElement languageName= driver.findElement(By.cssSelector("input[formcontrolname=\"languageName\"]"));
-       	languageName.sendKeys("AutomationTesting1");
+       	languageName.sendKeys("AutomationTesting2");
        	Thread.sleep(2000);
        	WebElement languagecode= driver.findElement(By.cssSelector("input[formcontrolname=\"languageCode\"]"));
-       	languagecode.sendKeys("ATTS1");
+       	languagecode.sendKeys("ATTS2");
        	Thread.sleep(2000);       	
 
        	
@@ -280,7 +280,7 @@ Thread.sleep(100);
    creategenreElement.click();
    Thread.sleep(2000);
    WebElement genrenameElement = driver.findElement(By.xpath("//input[@formcontrolname='categoryName']"));
-   genrenameElement.sendKeys("AutomationTesting1");
+   genrenameElement.sendKeys("AutomationTesting2");
    WebElement genrelogo1= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-genre/div/div/div[2]/div[1]/div[1]/div[2]/div/label/span"));
 
    if (genrelogo1.isEnabled()) {

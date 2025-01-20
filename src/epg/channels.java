@@ -316,8 +316,8 @@ Thread.sleep(2000);
                                  // Upload a file (select a file from the local drive)
                              	//uploadButton.click();
                              	Thread.sleep(2000);
-                                 WebElement fileInput = driver.findElement(By.id("fileInput")); // Replace with the actual ID of the file input element
-                                 fileInput.sendKeys("C:\\Users\\User\\Desktop\\onnet_logo.jpg"); // Replace with the file's actual path
+                                 WebElement fileInput = driver.findElement(By.id("fileInput")); 
+                                 fileInput.sendKeys("C:\\Users\\User\\Desktop\\onnet_logo.jpg"); 
                                //  uploadButton.click();
                              } else {
                                  System.out.println("Upload button is not enabled!");
