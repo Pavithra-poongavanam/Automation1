@@ -1,5 +1,6 @@
 package Ashke;
 
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class Login {
     WebDriver driver;

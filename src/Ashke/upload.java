@@ -1,4 +1,7 @@
 package Ashke;
+import java.nio.file.Paths;
+
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,29 +12,27 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import java.nio.file.Paths;
-import java.time.Duration;
 
-public class upload 
+public class upload
 {
 	WebDriver driver=new ChromeDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));  
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
 	long starttime;
 
 @BeforeSuite
-	
+
 	public void starttime()
 	{
 		 starttime= System.currentTimeMillis();
 	}
     @Test(priority = 0)
     public void SetUp() throws InterruptedException {
-    	
+
         driver.get("http://103.81.157.84:8900/auth/login");
          driver.manage().window().maximize();
          Thread.sleep(2000);
      }
-    
+
     @Test(priority = 1)
     public void TestValidLogin() throws InterruptedException {
         WebElement emailfield = driver.findElement(By.id("login-email"));
@@ -49,26 +50,26 @@ public class upload
 
     @Test(priority = 2)
     public void TestUploadForShortFilm() throws InterruptedException {
-    	
+
     	WebElement uploadelElement= driver.findElement(By.xpath("/html/body/app-root/app-core/div[2]/app-sidenav/mat-sidenav-container/mat-sidenav-content/div[1]/ul/li[2]"));
     	uploadelElement.click();
     	Thread.sleep(2000);
-    	
+
         WebElement shortFilmOption = driver.findElement(By.id("mat-button-toggle-1-button"));
         shortFilmOption.click();
-        
+
         WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
-        String filePath = Paths.get("C:\\Users\\User\\Videos\\Captures\\dummy.mp4").toAbsolutePath().toString(); 
-        fileInput.sendKeys(filePath); 
+        String filePath = Paths.get("C:\\Users\\User\\Videos\\Captures\\dummy.mp4").toAbsolutePath().toString();
+        fileInput.sendKeys(filePath);
         Thread.sleep(2000);
-        
+
         WebElement uploadFileButton = driver.findElement(By.xpath("//span[text()=\" Upload \"]"));
         uploadFileButton.click();
         Thread.sleep(10000);
-        
+
         WebElement progressPercentage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.percentage.os-t3-green")));
         wait.until(ExpectedConditions.textToBePresentInElement(progressPercentage, "100%"));
-        		        		     		       
+
   String percentageString = progressPercentage.getText();
         if(percentageString.equals("100%"))
         {
@@ -82,35 +83,35 @@ public class upload
         String confirmmessage= confirmationMessage.getText();
         System.out.println(confirmmessage);
         Thread.sleep(2000);
-          
+
     }
-    
+
 
     /*
- 
+
 
     @Test(priority = 3)
     public void TestUploadForMovies() throws InterruptedException {
-    
+
     	WebElement uploadElement= driver.findElement(By.xpath("/html/body/app-root/app-core/div[2]/app-sidenav/mat-sidenav-container/mat-sidenav-content/div[1]/ul/li[2]"));
     	uploadElement.click();
     	Thread.sleep(2000);
-    	
+
         WebElement moviesOption = driver.findElement(By.id("mat-button-toggle-2-button"));
         moviesOption.click();
 
         WebElement fileInput = driver.findElement(By.xpath("/html/body/app-root/app-core/div[2]/div/app-upload-content/div/div/div/div/div[1]/div/label/input"));
-        String filePath = Paths.get("C:\\Users\\User\\Videos\\Captures\\movie.mp4").toAbsolutePath().toString();  
+        String filePath = Paths.get("C:\\Users\\User\\Videos\\Captures\\movie.mp4").toAbsolutePath().toString();
         fileInput.sendKeys(filePath);
         Thread.sleep(2000);
     }
-             
+
         WebElement uploadFileButton = driver.findElement(By.xpath("//span[text()=\" Upload \"]"));
         uploadFileButton.click();
 
         WebElement progressPercentage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.percentage.os-t3-green")));
         wait.until(ExpectedConditions.textToBePresentInElement(progressPercentage, "100%"));
-        		        		     		       
+
   String percentageString = progressPercentage.getText();
         if(percentageString.equals("100%"))
         {
@@ -128,9 +129,9 @@ public class upload
 
    @Test(priority = 3)
     public void testUploadForEpisodes() {
-    
-    
-    
+
+
+
         WebElement episodesOption = driver.findElement(By.id("mat-button-toggle-3-button"));
         episodesOption.click();
 
@@ -153,11 +154,11 @@ public class upload
 
     @Test(priority = 4)
     public void testUploadForSongs() {
-    
+
     	WebElement uploadelElement= driver.findElement(By.xpath("/html/body/app-root/app-core/div[2]/app-sidenav/mat-sidenav-container/mat-sidenav-content/div[1]/ul/li[2]"));
     	uploadelElement.click();
     	Thread.sleep(2000);
-    	
+
         WebElement songsOption = driver.findElement(By.id("mat-button-toggle-4-button"));
         songsOption.click();
 
@@ -192,6 +193,6 @@ public class upload
     {
     	long endtime= System.currentTimeMillis();
     	long totalTime = endtime- starttime;
-    	System.out.println("Total Time taken to execute the suit is :"+totalTime);			
+    	System.out.println("Total Time taken to execute the suit is :"+totalTime);
     }
 }

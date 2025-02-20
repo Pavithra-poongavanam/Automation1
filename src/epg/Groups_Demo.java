@@ -1,14 +1,15 @@
 package epg;
+import java.util.List;
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.util.List;
-import java.util.Random;
 public class Groups_Demo {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
-try{               
+try{
             // Login to the application
             Thread.sleep(3000);
             driver.get("http://103.255.144.131:8600/login");
@@ -26,14 +27,14 @@ try{
     		Thread.sleep(2000);
             WebElement login = driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[3]/button"));
             login.click();
-            Thread.sleep(5000); 
-            
+            Thread.sleep(5000);
+
             WebElement dashboardElement1 = driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[1]/div[1]/h3"));
-    		
+
     		if (dashboardElement1.isDisplayed()) {
     			System.out.println("Login successful!");
     		} else {
-    			System.out.println("Login failed.");   		
+    			System.out.println("Login failed.");
     		}
     		WebElement groups= driver.findElement(By.xpath("/html/body/app-root/app-core/app-navbar/nav/div/div[2]/ul/li[2]/a"));
    		 groups.click();
@@ -59,7 +60,7 @@ try{
  		 WebElement nextButton = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-edit-client/div/div/div[2]/div[2]/button"));
          nextButton.click();
          Thread.sleep(5000);
-         
+
          WebElement channelMappingElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-mapping-client/div/div/div[2]/div[1]/div[1]/p[1]"));
          if (channelMappingElement.isDisplayed()) {
              System.out.println("Navigated to channel mapping page");
@@ -68,48 +69,47 @@ try{
          }
          WebElement mappingchannel= driver.findElement(By.xpath("/html/body/app-root/app-core/app-mapping-client/div/div/div[2]/div[2]/div[16]/label/img"));
          mappingchannel.click();
-         
+
          WebElement nextbuttonElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-mapping-client/div/div/div[2]/div[3]/div[2]/div[2]/button"));
          nextbuttonElement.click();
          Thread.sleep(2000);
         WebElement UnicastHLSURL = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[1]/input"));
         UnicastHLSURL.sendKeys("www.demo");
-        
+
         WebElement UnicastDashURL = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[2]/input"));
         UnicastDashURL.sendKeys("www.demo");
-        
+
         WebElement multicastElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[3]/input"));
         multicastElement.sendKeys("6");
-        
+
         WebElement channelIdElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[4]/input"));
         channelIdElement.sendKeys("2");
-        
+
         WebElement lCNElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[5]/input"));
         lCNElement.sendKeys("2");
-        
+
         WebElement billingstatusElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[7]/select"));
         billingstatusElement.click();
         WebElement freeElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[7]/select/option[1]"));
         freeElement.click();
-        
+
         WebElement saveElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[3]/div/div[3]/button"));
-        saveElement.click();   
+        saveElement.click();
         Thread.sleep(5000);
         WebElement mappedchannelpage = driver.findElement(By.xpath("/html/body/app-root/app-core/app-client-details/div/div[2]/div/div/div/div[1]/div[1]/div[1]/h3"));
         if (mappedchannelpage.isDisplayed()) {
  			System.out.println("Channels are mapped successfully");
  		} else {
- 			System.out.println("Couldn't map");			
- 		
+ 			System.out.println("Couldn't map");
+
         }
         }catch (Exception e) {
             e.printStackTrace();
         } finally {
           //  driver.quit();
         }
-    }	
-    } 
-   
-		 
-    		
-                   
+    }
+    }
+
+
+

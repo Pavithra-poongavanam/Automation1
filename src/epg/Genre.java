@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 public class Genre {
 
-	public static void main(String[] args) throws InterruptedException 
-	
+	public static void main(String[] args) throws InterruptedException
+
 	{
 		WebDriver driver= new ChromeDriver();
 
@@ -29,10 +29,10 @@ try {
 		genreElement.click();
 		Thread.sleep(2000);
 		WebElement genre= driver.findElement(By.xpath("/html/body/app-root/app-core/app-genre-list/div/div/div[1]/h3"));
-if(genre.isDisplayed())
+if(genre.isDisplayed()) {
 	System.out.println("Genre Page");
-	else {
-		System.out.println("Unable to open genre page");		
+} else {
+		System.out.println("Unable to open genre page");
 	}
 WebElement creategenreElement= driver.findElement(By.xpath("//button[@class='cta']"));
 creategenreElement.click();
@@ -43,8 +43,8 @@ WebElement genrelogo1= driver.findElement(By.xpath("/html/body/app-root/app-core
 
 if (genrelogo1.isEnabled()) {
     Thread.sleep(2000);
-    WebElement fileInput = driver.findElement(By.id("fileInput")); 
-    fileInput.sendKeys("C:\\Users\\User\\Desktop\\onnet_logo.jpg"); 
+    WebElement fileInput = driver.findElement(By.id("fileInput"));
+    fileInput.sendKeys("C:\\Users\\User\\Desktop\\onnet_logo.jpg");
     System.out.println("Logo Uploaded successfully");
 } else {
     System.out.println("Upload button for Logo 1 is not enabled!");
@@ -61,7 +61,7 @@ if(genrelogo2.isEnabled())
 	Thread.sleep(2000);
 }
 else {
-	System.out.println("Upload button for logo2 is not enabled");	
+	System.out.println("Upload button for logo2 is not enabled");
 }
 	Thread.sleep(2000);
 	WebElement genresaveElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-genre/div/div/div[2]/div[2]/form/div[2]/div/div[2]/button"));
@@ -69,10 +69,10 @@ else {
 	Thread.sleep(2000);
 WebElement genre1= driver.findElement(By.xpath("/html/body/app-root/app-core/app-genre-list/div/div/div[1]/h3"));
 
-if(genre1.isDisplayed())
+if(genre1.isDisplayed()) {
 	System.out.println("Genre successfully created");
-	else {
-		System.out.println("Unable to create genre");		
+} else {
+		System.out.println("Unable to create genre");
 	}
 Thread.sleep(2000);
 

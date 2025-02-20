@@ -23,14 +23,14 @@ public class Login {
 		WebElement Login= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[3]/button"));
 		Login.click();
 		Thread.sleep(2000);
-		
+
 WebElement dashboardElement1 = driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[1]/div[1]/h3"));
-		
+
 		if (dashboardElement1.isDisplayed()) {
 			System.out.println("Login successful!");
 		} else {
 			System.out.println("Login failed.");
-		
+
 		}
 	}
 

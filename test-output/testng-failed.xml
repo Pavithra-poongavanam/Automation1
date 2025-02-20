@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Ashke.Series">
+      <class name="Ashke.Login">
         <methods>
-          <include name="Save"/>
-          <include name="AddEpisodes"/>
-          <include name="Update"/>
-          <include name="endtime"/>
-          <include name="starttime"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="testInvalidLogin"/>
         </methods>
-      </class> <!-- Ashke.Series -->
+      </class> <!-- Ashke.Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

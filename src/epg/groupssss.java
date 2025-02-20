@@ -1,11 +1,8 @@
 package epg;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
-import java.time.Duration;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,19 +10,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.yaml.snakeyaml.scanner.Scanner;
 
 
 public class groupssss {
 
 	public static void main(String[] args) throws InterruptedException {
-		 WebDriver driver = new ChromeDriver();	
+		 WebDriver driver = new ChromeDriver();
          Scanner scanner = new Scanner(System.in);
 
 		try {
-		// TODO Auto-generated method stub					
-		 driver.get("http://103.255.144.131:8600/login");	
+		// TODO Auto-generated method stub
+		 driver.get("http://103.255.144.131:8600/login");
 			driver.manage().window().maximize();
-			WebElement email = driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[1]/input"));//search mail textbox 
+			WebElement email = driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[1]/input"));//search mail textbox
 			email.sendKeys("onnet@gmail.com");
 			Thread.sleep(1000);
 			WebElement password= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[2]/input"));//search password field
@@ -36,14 +35,14 @@ public class groupssss {
     		Thread.sleep(2000);
 			WebElement Login= driver.findElement(By.xpath("/html/body/app-root/app-core/app-login/div/div[2]/div[2]/form/div[3]/button"));
 			Login.click();
-			Thread.sleep(5000);			
-			WebElement dashboardElement1 = driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[1]/div[1]/h3"));			
+			Thread.sleep(5000);
+			WebElement dashboardElement1 = driver.findElement(By.xpath("/html/body/app-root/app-core/app-channel-list/div/div/div[1]/div[1]/div[1]/h3"));
 			if (dashboardElement1.isDisplayed()) {
 				System.out.println("Login successful!");
 			} else {
-				System.out.println("Login failed.");			
+				System.out.println("Login failed.");
 			}
-					
+
 		 WebElement groups= driver.findElement(By.xpath("/html/body/app-root/app-core/app-navbar/nav/div/div[2]/ul/li[2]/a"));
 		 groups.click();
 		 Thread.sleep(2000);
@@ -58,10 +57,10 @@ public class groupssss {
 		 create.click();
 		 Thread.sleep(2000);
 		 WebElement groupNameField = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-edit-client/div/div/form/div[1]/input"));
-		 System.out.println("Enter the group name: ");		 	
+		 System.out.println("Enter the group name: ");
 		 String groupString = scanner.nextLine();
 		 groupNameField.sendKeys(groupString);
-		 
+
        //  groupNameField.sendKeys("New Group");
          // Randomly select a radio button for services
     		List<WebElement> serviceRadioButtons = driver.findElements(By.cssSelector("input[type='radio']"));
@@ -187,33 +186,33 @@ public class groupssss {
        System.out.println("Enter the Unicast HLS URL");
        String unicastHls = scanner.nextLine();
        UnicastHLSURL.sendKeys(unicastHls);
-               
+
        WebElement UnicastDashURL = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[2]/input"));
        System.out.println("Enter the Unicast Dash URL");
        String unicastDash = scanner.nextLine();
        UnicastDashURL.sendKeys(unicastDash);
-       
+
        WebElement multicastElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[3]/input"));
        System.out.println("Enter the Multicast URL");
        String multicast = scanner.nextLine();
        multicastElement.sendKeys(multicast);
-               
+
        WebElement channelIdElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[4]/input"));
        System.out.println("Enter the Channel Id");
        String channelId = scanner.nextLine();
        channelIdElement.sendKeys(channelId);
-       
+
        WebElement lCNElement = driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[5]/input"));
        System.out.println("Enter LCN");
        String lcn = scanner.nextLine();
        lCNElement.sendKeys(lcn);
-       
+
        WebElement billingstatusElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[7]/select"));
        billingstatusElement.click();
-       
+
        Select select = new Select(billingstatusElement);
        String userInput = "";
-       
+
        while (true) {
            System.out.println("Please enter the billing status you want to select (FTA/Pay):");
            userInput = scanner.nextLine().trim().toUpperCase();
@@ -222,15 +221,15 @@ public class groupssss {
                select.selectByVisibleText(userInput);
                System.out.println("Selected the option: " + userInput);
                    if (userInput.equals("PAY")) {
-                   	
+
                    String priceInput = "";
                    while (true) {
                    	WebElement pricElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[2]/form/div[2]/div[8]/input"));
-                   	
+
                        System.out.println("Please enter the price(numeric value only):");
                        pricElement.sendKeys(priceInput);
                        priceInput = scanner.nextLine().trim();
-                       
+
                        if (priceInput.matches("\\d+(\\.\\d{1,2})?")) { // Check for a valid numeric input with up to 2 decimal places
                            System.out.println("Price entered: " + priceInput);
                            break;
@@ -245,13 +244,13 @@ public class groupssss {
            }
        }
        WebElement saveElement= driver.findElement(By.xpath("/html/body/app-root/app-core/app-create-mapping/div/div/div/div[3]/div/div[3]/button"));
-       saveElement.click();   
+       saveElement.click();
        Thread.sleep(5000);
        WebElement mappedchannelpage = driver.findElement(By.xpath("/html/body/app-root/app-core/app-client-details/div/div[2]/div/div/div/div[1]/div[1]/div[1]/h3"));
        if (mappedchannelpage.isDisplayed()) {
 			System.out.println("Channels are mapped successfully");
 		} else {
-			System.out.println("Couldn't map");			
+			System.out.println("Couldn't map");
 		}
 
     } catch (Exception e) {
@@ -259,5 +258,5 @@ public class groupssss {
     } finally {
       //  driver.quit();
     }
-}	
-} 
+}
+}

@@ -1,7 +1,6 @@
 package Ashke;
 
-import java.time.Duration;
-
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -15,15 +14,15 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class AdvisoryTag {
-	
+
 	WebDriver driver = new ChromeDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); 
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	long starttime;
     JavascriptExecutor jsExecutor;
 
-	
+
 @BeforeSuite
-	
+
 	public void starttime()
 	{
 		 starttime= System.currentTimeMillis();
@@ -31,12 +30,12 @@ public class AdvisoryTag {
 
     @Test(priority = 0)
     public void SetUp() throws InterruptedException {
-    	
+
         driver.get("http://103.81.157.84:8900/auth/login");
          driver.manage().window().maximize();
          Thread.sleep(2000);
      }
-    
+
     @Test(priority = 1)
     public void TestValidLogin() throws InterruptedException {
         WebElement emailfield = driver.findElement(By.id("login-email"));
@@ -51,30 +50,30 @@ public class AdvisoryTag {
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, "http://103.81.157.84:8900/content/dashboard", "User did not navigate to the homepage.");
     }
-    
+
     @Test(priority = 2)
     public void AdvisoryTagNavigation() throws InterruptedException
     {
     	WebElement advisorytag = driver.findElement(By.xpath("/html/body/app-root/app-core/div[2]/app-sidenav/mat-sidenav-container/mat-sidenav-content/div[1]/ul/li[10]/h2"));
     	advisorytag.click();
     	Thread.sleep(2000);
-    	
+
     	}
     @Test(priority = 3)
 	public void Search() throws InterruptedException
-	{	
+	{
 		String[] searchTerms = {"Parental"};
 	        for (String searchTerm : searchTerms) {
 	            System.out.println("Performing search for: " + searchTerm);
 	                        WebElement searchInput = driver.findElement(By.xpath("/html/body/app-root/app-core/div[2]/div/app-display-tags-list/div/div/div/div[1]/app-onnet-search-bar/div/input"));
 	                        searchInput.click();
-	            searchInput.clear();  
-	            searchInput.sendKeys(searchTerm + Keys.RETURN);  	           
-	    }       
+	            searchInput.clear();
+	            searchInput.sendKeys(searchTerm + Keys.RETURN);
+	    }
 	        driver.navigate().refresh();
-	        Thread.sleep(2000);        
+	        Thread.sleep(2000);
 }
-			
+
 	@Test(priority = 4)
 	public void CreateAdvisoryTag() throws InterruptedException
 	{
@@ -82,28 +81,28 @@ public class AdvisoryTag {
 		CreateAdvisoryTag.click();
 		Thread.sleep(2000);
 		WebElement tagname = driver.findElement(By.id("tag"));
-		tagname.sendKeys("Testing");				
-		
-	    	
+		tagname.sendKeys("Testing");
+
+
 	    	String tagValue = tagname.getAttribute("value").trim();
 	    	 if (tagValue.isEmpty()) {
 	                System.out.println("Error: Tag field is empty!");
 	            }
-	    	 
+
 	            System.out.println("Validation passed: Name field is filled.");
-	           
+
 	    	WebElement save = driver.findElement(By.xpath("//*[@id=\"mat-dialog-0\"]/app-display-tags-add-edit/div/div[2]/button[2]"));
-	    	save.click();	    		    	
+	    	save.click();
 	    	WebElement successmessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("simple-snack-bar.mat-simple-snackbar")));
 			        WebElement confirmationMessage = successmessage.findElement(By.cssSelector("span"));
 			        String confirmmessage= confirmationMessage.getText();
 			        System.out.println(confirmmessage);
 			        Thread.sleep(2000);
-	    
-	    	
+
+
 	}
-	
-	
+
+
 }
 
 

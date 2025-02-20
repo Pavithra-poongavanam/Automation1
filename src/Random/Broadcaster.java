@@ -1,26 +1,24 @@
 package Random;
 
 
-import java.time.Duration;
-
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class Broadcaster {
 
 		WebDriver driver= new ChromeDriver();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); 
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		long starttime;
 
 		@BeforeSuite
-		
+
 		public void starttime()
 		{
 			 starttime = System.currentTimeMillis();
@@ -28,8 +26,8 @@ public class Broadcaster {
 
 	    @Test(priority = 0)
 	    public void SetUp() throws InterruptedException {
-	    	
-	    	driver.get("https://admin.skypro.co.in/");	
+
+	    	driver.get("https://admin.skypro.co.in/");
 			driver.manage().window().maximize();
 			WebElement email = driver.findElement(By.xpath("/html/body/app-root/app-core/div/app-login/div/div/div[2]/form/div/div[1]/input"));
 			email.sendKeys("onnet@gmail.com");
@@ -41,10 +39,10 @@ public class Broadcaster {
 			Login.click();
 			Thread.sleep(3000);
 	     }
-	
+
 		@Test(priority = 1)
 		public void content () throws InterruptedException
-		
+
 		{
 			WebElement contentElement = driver.findElement(By.xpath("//*[@id=\"main-menu-id2\"]/span"));
 			contentElement.click();
@@ -59,9 +57,9 @@ public class Broadcaster {
 			WebElement addElement= driver.findElement(By.xpath("/html/body/app-root/app-core/div/app-list-broadcaster/div/div[1]/a/button"));
 			addElement.click();
 			Thread.sleep(2000);
-			
+
 		}
-		
+
 		@Test(priority = 3)
 		public void Details() throws InterruptedException
 		{
@@ -92,23 +90,23 @@ public class Broadcaster {
 
 			WebElement state = driver.findElement(By.xpath("/html/body/app-root/app-core/div/app-create-broadcaster/div/form/div/div/div[8]/input"));
 			state.sendKeys("Delhi");
-			
+
 			Thread.sleep(200);
 
 			WebElement pin = driver.findElement(By.xpath("/html/body/app-root/app-core/div/app-create-broadcaster/div/form/div/div/div[9]/input"));
 			pin.sendKeys(Keys.CONTROL + "a");
-			pin.sendKeys(Keys.DELETE);					
+			pin.sendKeys(Keys.DELETE);
 			pin.sendKeys("110002");
 			Thread.sleep(200);
 
 			WebElement address = driver.findElement(By.xpath("/html/body/app-root/app-core/div/app-create-broadcaster/div/form/div/div/div[10]/textarea"));
 			address.sendKeys("Delhi");
 			Thread.sleep(200);
-			
+
 		}
-		
-	
-		
+
+
+
 
 
 }
